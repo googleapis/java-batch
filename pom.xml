@@ -4,7 +4,7 @@
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-batch-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.1.1-SNAPSHOT</version><!-- {x-version-update:google-cloud-batch:current} -->
+  <version>0.1.2-SNAPSHOT</version><!-- {x-version-update:google-cloud-batch:current} -->
   <name>Google Google Cloud Batch Parent</name>
   <url>https://github.com/googleapis/java-batch</url>
   <description>
@@ -69,7 +69,7 @@
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-batch</artifactId>
-        <version>0.1.1-SNAPSHOT</version><!-- {x-version-update:google-cloud-batch:current} -->
+        <version>0.1.2-SNAPSHOT</version><!-- {x-version-update:google-cloud-batch:current} -->
       </dependency>
       <dependency>
         <groupId>com.google.api.grpc</groupId>
@@ -84,18 +84,18 @@
       <dependency>
         <groupId>com.google.api.grpc</groupId>
         <artifactId>grpc-google-cloud-batch-v1</artifactId>
-        <version>0.1.1-SNAPSHOT</version><!-- {x-version-update:grpc-google-cloud-batch-v1:current} -->
+        <version>0.1.2-SNAPSHOT</version><!-- {x-version-update:grpc-google-cloud-batch-v1:current} -->
       </dependency>
       <dependency>
         <groupId>com.google.api.grpc</groupId>
         <artifactId>proto-google-cloud-batch-v1</artifactId>
-        <version>0.1.1-SNAPSHOT</version><!-- {x-version-update:proto-google-cloud-batch-v1:current} -->
+        <version>0.1.2-SNAPSHOT</version><!-- {x-version-update:proto-google-cloud-batch-v1:current} -->
       </dependency>
 
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-shared-dependencies</artifactId>
-        <version>2.12.0</version>
+        <version>2.13.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
