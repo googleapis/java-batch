@@ -63,75 +63,81 @@ public class CreateWithScriptNoMounting {
     try (BatchServiceClient batchServiceClient = BatchServiceClient.create()) {
 
       // Define what will be done as part of the job.
-      Runnable runnable = Runnable.newBuilder()
-          .setScript(Script.newBuilder()
-              .setText(
-                  "echo Hello world! This is task ${BATCH_TASK_INDEX}. "
-                      + "This job has a total of ${BATCH_TASK_COUNT} tasks.")
-              // You can also run a script from a file. Just remember, that needs to be a script that's
-              // already on the VM that will be running the job.
-              // Using setText() and setPath() is mutually exclusive.
-              // .setPath("/tmp/test.sh")
-              .build())
-          .build();
+      Runnable runnable =
+          Runnable.newBuilder()
+              .setScript(
+                  Script.newBuilder()
+                      .setText(
+                          "echo Hello world! This is task ${BATCH_TASK_INDEX}. "
+                              + "This job has a total of ${BATCH_TASK_COUNT} tasks.")
+                      // You can also run a script from a file. Just remember, that needs to be a
+                      // script that's
+                      // already on the VM that will be running the job.
+                      // Using setText() and setPath() is mutually exclusive.
+                      // .setPath("/tmp/test.sh")
+                      .build())
+              .build();
 
       // We can specify what resources are requested by each task.
-      ComputeResource computeResource = ComputeResource.newBuilder()
-          // In milliseconds per cpu-second. This means the task requires 2 whole CPUs.
-          .setCpuMilli(2000)
-          // In MiB.
-          .setMemoryMib(16)
-          .build();
+      ComputeResource computeResource =
+          ComputeResource.newBuilder()
+              // In milliseconds per cpu-second. This means the task requires 2 whole CPUs.
+              .setCpuMilli(2000)
+              // In MiB.
+              .setMemoryMib(16)
+              .build();
 
-      TaskSpec task = TaskSpec.newBuilder()
-          // Jobs can be divided into tasks. In this case, we have only one task.
-          .addRunnables(runnable)
-          .setComputeResource(computeResource)
-          .setMaxRetryCount(2)
-          .setMaxRunDuration(Duration.newBuilder().setSeconds(3600).build())
-          .build();
+      TaskSpec task =
+          TaskSpec.newBuilder()
+              // Jobs can be divided into tasks. In this case, we have only one task.
+              .addRunnables(runnable)
+              .setComputeResource(computeResource)
+              .setMaxRetryCount(2)
+              .setMaxRunDuration(Duration.newBuilder().setSeconds(3600).build())
+              .build();
 
       // Tasks are grouped inside a job using TaskGroups.
-      TaskGroup taskGroup = TaskGroup.newBuilder()
-          .setTaskCount(4)
-          .setTaskSpec(task)
-          .build();
+      TaskGroup taskGroup = TaskGroup.newBuilder().setTaskCount(4).setTaskSpec(task).build();
 
       // Policies are used to define on what kind of virtual machines the tasks will run on.
       // In this case, we tell the system to use "e2-standard-4" machine type.
       // Read more about machine types here: https://cloud.google.com/compute/docs/machine-types
-      InstancePolicy instancePolicy = InstancePolicy.newBuilder()
-          .setMachineType("e2-standard-4")
-          .build();
+      InstancePolicy instancePolicy =
+          InstancePolicy.newBuilder().setMachineType("e2-standard-4").build();
 
-      AllocationPolicy allocationPolicy = AllocationPolicy.newBuilder()
-          .addInstances(InstancePolicyOrTemplate.newBuilder()
-              .setPolicy(instancePolicy)
-              .build())
-          .build();
+      AllocationPolicy allocationPolicy =
+          AllocationPolicy.newBuilder()
+              .addInstances(InstancePolicyOrTemplate.newBuilder().setPolicy(instancePolicy).build())
+              .build();
 
-      Job job = Job.newBuilder()
-          .addTaskGroups(taskGroup)
-          .setAllocationPolicy(allocationPolicy)
-          .putLabels("env", "testing").putLabels("type", "script")
-          // We use Cloud Logging as it's an out of the box available option.
-          .setLogsPolicy(LogsPolicy.newBuilder()
-              .setDestination(Destination.CLOUD_LOGGING)
-              .build())
-          .build();
+      Job job =
+          Job.newBuilder()
+              .addTaskGroups(taskGroup)
+              .setAllocationPolicy(allocationPolicy)
+              .putLabels("env", "testing")
+              .putLabels("type", "script")
+              // We use Cloud Logging as it's an out of the box available option.
+              .setLogsPolicy(
+                  LogsPolicy.newBuilder().setDestination(Destination.CLOUD_LOGGING).build())
+              .build();
 
-      CreateJobRequest createJobRequest = CreateJobRequest.newBuilder()
-          // The job's parent is the region in which the job will run.
-          .setParent(String.format("projects/%s/locations/%s", projectId, region))
-          .setJob(job)
-          .setJobId(jobName)
-          .build();
+      CreateJobRequest createJobRequest =
+          CreateJobRequest.newBuilder()
+              // The job's parent is the region in which the job will run.
+              .setParent(String.format("projects/%s/locations/%s", projectId, region))
+              .setJob(job)
+              .setJobId(jobName)
+              .build();
 
-      Job result = batchServiceClient.createJobCallable().futureCall(createJobRequest)
-          .get(3, TimeUnit.MINUTES);
+      Job result =
+          batchServiceClient
+              .createJobCallable()
+              .futureCall(createJobRequest)
+              .get(3, TimeUnit.MINUTES);
 
       String resultJobName = result.getName();
-      System.out.printf("Successfully created the job: %s",
+      System.out.printf(
+          "Successfully created the job: %s",
           resultJobName.substring(resultJobName.lastIndexOf("\\") + 1));
     }
   }

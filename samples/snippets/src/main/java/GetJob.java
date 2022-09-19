@@ -43,12 +43,13 @@ public class GetJob {
     // clean up any remaining background resources.
     try (BatchServiceClient batchServiceClient = BatchServiceClient.create()) {
 
-      Job job = batchServiceClient.getJob(
-          JobName.newBuilder()
-              .setProject(projectId)
-              .setLocation(region)
-              .setJob(jobName)
-              .build());
+      Job job =
+          batchServiceClient.getJob(
+              JobName.newBuilder()
+                  .setProject(projectId)
+                  .setLocation(region)
+                  .setJob(jobName)
+                  .build());
 
       System.out.printf("Retrieved the job: %s ", job.getName());
     }

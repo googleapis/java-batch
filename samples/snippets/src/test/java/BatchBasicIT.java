@@ -43,7 +43,8 @@ public class BatchBasicIT {
   // Check if the required environment variables are set.
   public static void requireEnvVar(String envVarName) {
     assertWithMessage(String.format("Missing environment variable '%s' ", envVarName))
-        .that(System.getenv(envVarName)).isNotEmpty();
+        .that(System.getenv(envVarName))
+        .isNotEmpty();
   }
 
   @BeforeClass
@@ -69,7 +70,6 @@ public class BatchBasicIT {
     System.setOut(out);
   }
 
-
   @AfterClass
   public static void cleanup()
       throws IOException, InterruptedException, ExecutionException, TimeoutException {
@@ -83,7 +83,6 @@ public class BatchBasicIT {
     stdOut.close();
     System.setOut(out);
   }
-
 
   @Before
   public void beforeEach() {
@@ -109,5 +108,4 @@ public class BatchBasicIT {
     assertThat(stdOut.toString()).contains(CONTAINER_JOB_NAME);
     assertThat(stdOut.toString()).contains(SCRIPT_JOB_NAME);
   }
-
 }
