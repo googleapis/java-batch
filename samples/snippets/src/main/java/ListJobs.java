@@ -22,10 +22,10 @@ public class ListJobs {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    // projectId: project ID or project number of the Cloud project you want to use.
+    // Project ID or project number of the Cloud project you want to use.
     String projectId = "YOUR_PROJECT_ID";
 
-    // region: name of the region hosting the jobs.
+    // Name of the region hosting the jobs.
     String region = "europe-central2";
 
     listJobs(projectId, region);

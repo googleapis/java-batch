@@ -23,13 +23,13 @@ public class GetJob {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    // projectId: project ID or project number of the Cloud project you want to use.
+    // Project ID or project number of the Cloud project you want to use.
     String projectId = "YOUR_PROJECT_ID";
 
-    // region: name of the region hosts the job.
+    // Name of the region hosts the job.
     String region = "europe-central2";
 
-    // jobName: the name of the job you want to retrieve information about.
+    // The name of the job you want to retrieve information about.
     String jobName = "JOB_NAME";
 
     getJob(projectId, region, jobName);

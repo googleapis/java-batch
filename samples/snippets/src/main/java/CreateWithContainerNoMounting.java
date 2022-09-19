@@ -38,14 +38,14 @@ public class CreateWithContainerNoMounting {
   public static void main(String[] args)
       throws IOException, ExecutionException, InterruptedException, TimeoutException {
     // TODO(developer): Replace these variables before running the sample.
-    // projectId: project ID or project number of the Cloud project you want to use.
+    // Project ID or project number of the Cloud project you want to use.
     String projectId = "YOUR_PROJECT_ID";
 
-    // region: name of the region you want to use to run the job. Regions that are
+    // Name of the region you want to use to run the job. Regions that are
     // available for Batch are listed on: https://cloud.google.com/batch/docs/get-started#locations
     String region = "europe-central2";
 
-    // jobName: the name of the job that will be created.
+    // The name of the job that will be created.
     // It needs to be unique for each project and region pair.
     String jobName = "JOB_NAME";
 

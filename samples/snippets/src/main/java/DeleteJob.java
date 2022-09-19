@@ -25,13 +25,13 @@ public class DeleteJob {
   public static void main(String[] args)
       throws IOException, ExecutionException, InterruptedException, TimeoutException {
     // TODO(developer): Replace these variables before running the sample.
-    // projectId: project ID or project number of the Cloud project you want to use.
+    // Project ID or project number of the Cloud project you want to use.
     String projectId = "YOUR_PROJECT_ID";
 
-    // region: name of the region hosts the job.
+    // Name of the region hosts the job.
     String region = "europe-central2";
 
-    // jobName: the name of the job that you want to delete.
+    // The name of the job that you want to delete.
     String jobName = "JOB_NAME";
 
     deleteJob(projectId, region, jobName);
