@@ -61,13 +61,17 @@ public class BatchBasicIT {
     CONTAINER_JOB_NAME = "test-job-container-" + uuid;
 
     CreateWithContainerNoMounting.createContainerJob(PROJECT_ID, REGION, CONTAINER_JOB_NAME);
-    assertThat(stdOut.toString()).contains(
-        "Successfully created the job: " + String.format("projects/%s/locations/%s/jobs/%s",
-            PROJECT_ID, REGION, CONTAINER_JOB_NAME));
+    assertThat(stdOut.toString())
+        .contains(
+            "Successfully created the job: "
+                + String.format(
+                    "projects/%s/locations/%s/jobs/%s", PROJECT_ID, REGION, CONTAINER_JOB_NAME));
     CreateWithScriptNoMounting.createScriptJob(PROJECT_ID, REGION, SCRIPT_JOB_NAME);
-    assertThat(stdOut.toString()).contains(
-        "Successfully created the job: " + String.format("projects/%s/locations/%s/jobs/%s",
-            PROJECT_ID, REGION, SCRIPT_JOB_NAME));
+    assertThat(stdOut.toString())
+        .contains(
+            "Successfully created the job: "
+                + String.format(
+                    "projects/%s/locations/%s/jobs/%s", PROJECT_ID, REGION, SCRIPT_JOB_NAME));
     TimeUnit.SECONDS.sleep(10);
 
     stdOut.close();
