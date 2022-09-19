@@ -71,8 +71,7 @@ public class CreateWithScriptNoMounting {
                           "echo Hello world! This is task ${BATCH_TASK_INDEX}. "
                               + "This job has a total of ${BATCH_TASK_COUNT} tasks.")
                       // You can also run a script from a file. Just remember, that needs to be a
-                      // script that's
-                      // already on the VM that will be running the job.
+                      // script that's already on the VM that will be running the job.
                       // Using setText() and setPath() is mutually exclusive.
                       // .setPath("/tmp/test.sh")
                       .build())
@@ -135,10 +134,7 @@ public class CreateWithScriptNoMounting {
               .futureCall(createJobRequest)
               .get(3, TimeUnit.MINUTES);
 
-      String resultJobName = result.getName();
-      System.out.printf(
-          "Successfully created the job: %s",
-          resultJobName.substring(resultJobName.lastIndexOf("\\") + 1));
+      System.out.printf("Successfully created the job: %s", result.getName());
     }
   }
 }

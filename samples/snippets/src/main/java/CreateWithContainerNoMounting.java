@@ -133,10 +133,7 @@ public class CreateWithContainerNoMounting {
               .futureCall(createJobRequest)
               .get(3, TimeUnit.MINUTES);
 
-      String resultJobName = result.getName();
-      System.out.printf(
-          "Successfully created the job: %s",
-          resultJobName.substring(resultJobName.lastIndexOf("\\") + 1));
+      System.out.printf("Successfully created the job: %s", result.getName());
     }
   }
 }
