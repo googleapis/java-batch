@@ -89,7 +89,7 @@
       <dependency>
         <groupId>com.google.api.grpc</groupId>
         <artifactId>proto-google-cloud-batch-v1</artifactId>
-        <version>0.3.3-SNAPSHOT</version><!-- {x-version-update:proto-google-cloud-batch-v1:current} -->
+        <version>0.4.0</version><!-- {x-version-update:proto-google-cloud-batch-v1:current} -->
       </dependency>
 
       <dependency>
