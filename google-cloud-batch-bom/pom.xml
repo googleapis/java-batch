@@ -75,7 +75,7 @@
       <dependency>
         <groupId>com.google.api.grpc</groupId>
         <artifactId>grpc-google-cloud-batch-v1alpha</artifactId>
-        <version>0.4.0</version><!-- {x-version-update:grpc-google-cloud-batch-v1alpha:current} -->
+        <version>0.3.3-SNAPSHOT</version><!-- {x-version-update:grpc-google-cloud-batch-v1alpha:current} -->
       </dependency>
       <dependency>
         <groupId>com.google.api.grpc</groupId>
