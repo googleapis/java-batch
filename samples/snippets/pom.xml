@@ -4,12 +4,12 @@
   <groupId>com.google.cloud</groupId>
   <artifactId>-snippets</artifactId>
   <packaging>jar</packaging>
-  <name>Google Google Cloud Batch Snippets</name>
+  <name>Google Cloud Batch Snippets</name>
   <url>https://github.com/googleapis/java-batch</url>
 
   <!--
     The parent pom defines common style checks and testing strategies for our samples.
-    Removing or replacing it should not affect the execution of the samples in anyway.
+    Removing or replacing it should not affect the execution of the samples in any way.
   -->
   <parent>
     <groupId>com.google.cloud.samples</groupId>
@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-batch</artifactId>
-      <version>0.3.2</version>
+      <version>0.5.0</version>
     </dependency>
 
     <dependency>
